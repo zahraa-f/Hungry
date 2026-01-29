@@ -30,6 +30,7 @@ flutter:
     - assets/splash/
     - assets/test/
     - assets/detail/
+    - assets/svg/
 
   # example:
   # fonts:
