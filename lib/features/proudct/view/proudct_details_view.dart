@@ -100,7 +100,7 @@ class _ProudctDetailsViewState extends State<ProudctDetailsView> {
                     ],
                   ),
                   Spacer(),
-                  CustomeButton(text: 'Add To Cart', onTap: () {}),
+                  CustomButton(text: 'Add To Cart', onTap: () {}),
                 ],
               ),
               Gap(20),

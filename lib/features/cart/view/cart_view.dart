@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/features/cart/widget/cart_item.dart';
+import 'package:hungry/features/checkout/view/checkout_view.dart';
 import 'package:hungry/sheard/custom_text.dart';
 import 'package:hungry/sheard/custome_button.dart';
 
@@ -12,17 +13,24 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  int number = 1;
-  void onAdd() {
+  late List<int> quantities;
+  final int itemCount = 20;
+  @override
+  void initState() {
+    quantities = List.generate(itemCount, (_) => 1);
+    super.initState();
+  }
+
+  void onAdd(int index) {
     setState(() {
-      number++;
+      quantities[index]++;
     });
   }
 
-  void onMin() {
+  void onMin(int index) {
     setState(() {
-      if (number > 1) {
-        number--;
+      if (quantities[index] > 1) {
+        quantities[index]--;
       }
     });
   }
@@ -30,19 +38,25 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        backgroundColor: Colors.white,
+        scrolledUnderElevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: ListView.builder(
-          padding: EdgeInsets.only(bottom: 120, top: 50),
-          itemCount: 6,
+          padding: EdgeInsets.only(bottom: 120, top: 10),
+          itemCount: itemCount,
           itemBuilder: (context, index) {
             return CartItem(
               image: 'assets/test/order.png',
               text: 'Humburger',
               desc: 'Veggie Burger',
-              number: number,
-              onAdd: onAdd,
-              onMin: onMin,
+              number: quantities[index],
+              onAdd: () => onAdd(index),
+
+              onMin: () => onMin(index),
             );
           },
         ),
@@ -51,6 +65,13 @@ class _CartViewState extends State<CartView> {
         padding: EdgeInsets.symmetric(horizontal: 15),
         height: 75,
         width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
         child: Row(
           children: [
             Column(
@@ -61,7 +82,20 @@ class _CartViewState extends State<CartView> {
               ],
             ),
             Spacer(),
-            CustomeButton(text: 'Checkout', onTap: () {}),
+            CustomButton(
+              text: 'Checkout',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) {
+                      return CheckoutView();
+                    },
+                  ),
+                );
+              },
+              height: 50,
+            ),
           ],
         ),
       ),
