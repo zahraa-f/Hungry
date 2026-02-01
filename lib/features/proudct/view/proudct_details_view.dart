@@ -48,7 +48,7 @@ class _ProudctDetailsViewState extends State<ProudctDetailsView> {
                 child: Row(
                   children: List.generate(4, (index) {
                     return Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(right: 8),
                       child: ToppingCard(
                         image: 'assets/detail/tomato.png',
                         title: 'Tomato',
@@ -71,7 +71,7 @@ class _ProudctDetailsViewState extends State<ProudctDetailsView> {
                 child: Row(
                   children: List.generate(4, (index) {
                     return Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(right: 8),
                       child: ToppingCard(
                         image: 'assets/detail/fries.png',
                         title: 'Fries',
@@ -81,29 +81,35 @@ class _ProudctDetailsViewState extends State<ProudctDetailsView> {
                   }),
                 ),
               ),
-              Gap(50),
-              Row(
+              Gap(150),
+            ],
+          ),
+        ),
+      ),
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 10, offset: Offset(0, 1)),
+          ],
+          borderRadius: BorderRadius.circular(30),
+        ),
+        height: 120,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        text: 'Total',
-                        weight: FontWeight.bold,
-                        size: 16,
-                      ),
-                      CustomText(
-                        text: '\$18.9',
-                        weight: FontWeight.bold,
-                        size: 24,
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  CustomButton(text: 'Add To Cart', onTap: () {}),
+                  CustomText(text: 'Total', weight: FontWeight.bold, size: 16),
+                  CustomText(text: '\$18.9', weight: FontWeight.bold, size: 24),
                 ],
               ),
-              Gap(20),
+
+              CustomButton(text: 'Add To Cart', onTap: () {}, height: 50),
             ],
           ),
         ),

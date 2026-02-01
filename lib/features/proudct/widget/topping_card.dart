@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/sheard/custom_text.dart';
 
 class ToppingCard extends StatelessWidget {
@@ -20,19 +21,34 @@ class ToppingCard extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(15),
-          child: Container(height: 100, width: 120, color: Color(0xff3C2F2F)),
+          child: Container(
+            height: 70,
+            width: 105,
+            // color: Color(0xff3C2F2F),
+            color: AppColors.primary,
+          ),
         ),
 
         Positioned(
           top: -40,
-          right: -4,
-          left: -4,
+          right: -1,
+          left: -1,
           child: SizedBox(
-            height: 105,
-            width: 70,
-            child: Card(
+            height: 70,
+            // width: 50,
+            child: Material(
+              elevation: 2,
+              borderRadius: BorderRadius.circular(15),
               color: Colors.white,
-              child: Image.asset(image, fit: BoxFit.cover),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Image.asset(
+                  image,
+                  // fit: BoxFit.cover,
+                  height: 15,
+                  width: 15,
+                ),
+              ),
             ),
           ),
         ),

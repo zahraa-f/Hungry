@@ -28,7 +28,7 @@ class SingupView extends StatelessWidget {
           key: formkey,
           child: Column(
             children: [
-              Gap(150),
+              Gap(200),
               SvgPicture.asset('assets/logo/logo.svg', color: Colors.white),
               CustomText(
                 text: 'Welcome in our Food App',
@@ -47,58 +47,60 @@ class SingupView extends StatelessWidget {
                       topLeft: Radius.circular(30),
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      CustomTextfield(
-                        hint: 'Name',
-                        isPassword: false,
-                        controller: nameController,
-                      ),
-                      Gap(20),
-                      CustomTextfield(
-                        hint: 'Email Address',
-                        isPassword: false,
-                        controller: emailController,
-                      ),
-                      Gap(20),
-                      CustomTextfield(
-                        hint: 'Password',
-                        isPassword: true,
-                        controller: passController,
-                      ),
-                      Gap(30),
-                      CustomeAuthButton(
-                        color: AppColors.primary,
-                        textColor: Colors.white,
-                        text: 'SingUp',
-                        onTap: () {
-                          if (formkey.currentState!.validate()) {
-                            print("singup");
-                          }
-                        },
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomText(
-                            text: 'Do you have account?',
-                            color: AppColors.primary,
-                            size: 15,
-                            weight: FontWeight.w500,
-                          ),
-                          TextButton(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (c) => LoginView()),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        CustomTextfield(
+                          hint: 'Name',
+                          isPassword: false,
+                          controller: nameController,
+                        ),
+                        Gap(20),
+                        CustomTextfield(
+                          hint: 'Email Address',
+                          isPassword: false,
+                          controller: emailController,
+                        ),
+                        Gap(20),
+                        CustomTextfield(
+                          hint: 'Password',
+                          isPassword: true,
+                          controller: passController,
+                        ),
+                        Gap(30),
+                        CustomeAuthButton(
+                          color: AppColors.primary,
+                          textColor: Colors.white,
+                          text: 'SingUp',
+                          onTap: () {
+                            if (formkey.currentState!.validate()) {
+                              print("singup");
+                            }
+                          },
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomText(
+                              text: 'Do you have account?',
+                              color: AppColors.primary,
+                              size: 15,
+                              weight: FontWeight.w500,
                             ),
-                            child: Text(
-                              'Login',
-                              style: TextStyle(color: AppColors.primary),
+                            TextButton(
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (c) => LoginView()),
+                              ),
+                              child: Text(
+                                'Login',
+                                style: TextStyle(color: AppColors.primary),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
